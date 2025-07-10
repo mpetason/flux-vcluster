@@ -4,5 +4,5 @@ metadata:
   name: podinfo
   namespace: vcluster-demo-flux
 spec:
-  interval: 1h
+  interval: 1m
   url: https://stefanprodan.github.io/podinfo
