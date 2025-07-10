@@ -22,7 +22,8 @@ spec:
         metadata:
           name: podinfo
         spec:
-          replicas: 1 
+          minReplicas: 1 
+          maxReplicas: 1
       target:
         name: podinfo
         kind: HorizontalPodAutoscaler
