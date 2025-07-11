@@ -1,0 +1,38 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vcluster-demo-flux
+  namespace: vcluster-demo-flux
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: vcluster
+      version: "0.26.x"
+      sourceRef:
+        kind: HelmRepository
+        name: vcluster
+        namespace: flux-system
+  values:
+    # Configure TLS SAN for the certificate
+    controlPlane:
+      proxy:
+        extraSANs:
+          - "vcluster-demo-flux.vcluster-demo-flux.svc.cluster.local"
+      coredns:
+        enabled: true
+
+    exportKubeConfig:
+      # Set a meaningful context name
+      context: default
+      # Use a server URL that matches the TLS SAN
+      server: https://vcluster-demo-flux.vcluster-demo-flux.svc.cluster.local:443
+      # Skip TLS verification when Flux connects to the vCluster
+      insecure: true
+      # Specify the secret where the KubeConfig is stored
+      secret:
+        name: vcluster-flux-kubeconfig
+    sync:
+      toHost:
+        ingresses:
+          enabled: true
