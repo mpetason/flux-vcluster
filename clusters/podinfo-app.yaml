@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: podinfo
       version: '*'
-  interval: 30m
+  interval: 1m
   kubeConfig:
     secretRef:
       name: vcluster-flux-kubeconfig
