@@ -3,5 +3,5 @@ metadata:
   name: vcluster
   namespace: flux-system
 spec:
-  interval: 1h
+  interval: 1m
   url: https://charts.loft.sh
