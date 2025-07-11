@@ -23,7 +23,7 @@ spec:
     createNamespace: true
   values:
     ui:
-      message: "Deployed by Flux to virtual cluster"
+      message: "Deployed by Flux to virtual cluster - sweet"
     ingress:
       enabled: true
       hosts:
